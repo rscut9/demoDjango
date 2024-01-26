@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colecciones</title>
+    <style>
+        body {
+            margin-left: 1%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selecciona una colección:</h1>
+    <form method="get" action="{% url 'mostrar_coleccion' %}">
+        {% csrf_token %}
+        <select name="coleccion">
+            {% for coleccion in colecciones %}
+                <option value="{{ coleccion }}">{{ coleccion }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Mostrar">
+    </form>
+
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+</body>
+</html>

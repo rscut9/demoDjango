@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles de la Colección</title>
+    <style>
+
+        body {
+            margin-left: 1%;
+        }
+
+        .volver-button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Detalles de la colección "{{ coleccion }}"</h1>
+
+    <form method="get" action="{% url 'ver_coleccion' %}">
+        <input type="submit" class="volver-button" value="Volver">
+    </form>
+
+    {% for dato in datos %}
+        {% for key, value in dato.items %}
+            <p>{{ key }}: {{ value }}</p>
+        {% endfor %}
+        <hr>
+    {% endfor %}
+
+    <form method="get" action="{% url 'ver_coleccion' %}">
+        <input type="submit" class="volver-button" value="Volver">
+    </form>
+</body>
+</html>
