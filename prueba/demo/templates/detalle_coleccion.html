@@ -3,35 +3,39 @@
 <head>
     <title>Detalles de la Colección</title>
     <style>
-
+        /* Estilos para el cuerpo de la página */
         body {
             margin-left: 1%;
         }
 
+        /* Estilos para el botón de volver */
         .volver-button {
-            font-size: 18px;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: 2px solid black;
-            cursor: pointer;
+            font-size: 18px; /* Tamaño del texto */
+            padding: 10px 20px; /* Espaciado interno */
+            border-radius: 5px; /* Esquinas redondeadas */
+            border: 2px solid black; /* Borde negro de 2px */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
         }
-
     </style>
 </head>
 <body>
     <h1>Detalles de la colección "{{ coleccion }}"</h1>
 
+    <!-- Formulario para volver a la lista de colecciones -->
     <form method="get" action="{% url 'ver_coleccion' %}">
+        <!-- Botón de volver con clase 'volver-button' -->
         <input type="submit" class="volver-button" value="Volver">
     </form>
 
+    <!-- Bucle para mostrar los detalles de la colección -->
     {% for dato in datos %}
         {% for key, value in dato.items %}
             <p>{{ key }}: {{ value }}</p>
         {% endfor %}
-        <hr>
+        <hr> <!-- Línea horizontal para separar los datos -->
     {% endfor %}
 
+    <!-- Segundo formulario de volver -->
     <form method="get" action="{% url 'ver_coleccion' %}">
         <input type="submit" class="volver-button" value="Volver">
     </form>
