@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from pymongo import MongoClient
 
-# Vista para mostrar los detalles de una colección
+# Conexión a la base de datos MongoDB
+client = MongoClient('localhost', 27017)
+mydatabase = client.dumpmongo
+
+# Mostrar los detalles de una colección
 def mostrar_coleccion(request):
     try:
-        # Conexión a la base de datos MongoDB
-        client = MongoClient('localhost', 27017)
-        mydatabase = client.dumpmongo
-
         # Si se ha enviado el formulario
         if request.method == 'GET':
             # Obtén el nombre de la colección desde la solicitud GET
@@ -32,13 +32,9 @@ def mostrar_coleccion(request):
         # Redirige a la página 'error_template' con el mensaje de error
         return render(request, 'error_template.html', {'error_message': str(e)})
 
-# Vista para mostrar la lista de colecciones disponibles
+# Mostrar la lista de colecciones disponibles
 def ver_coleccion(request):
     try:
-        # Conexión a la base de datos MongoDB
-        client = MongoClient('localhost', 27017)
-        mydatabase = client.dumpmongo
-
         # Obtiene la lista de colecciones y las ordena alfabéticamente
         colecciones = sorted(mydatabase.list_collection_names())
 
