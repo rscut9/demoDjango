@@ -12,6 +12,20 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+# settings.py
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://564e9f78b2ba82a37783f3862d855a0e@o4506659327508480.ingest.sentry.io/4506659330457600",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -81,7 +95,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'dumpmongo',
+        'NAME': 'test',
         'HOST': 'localhost',
         'PORT': 27017,  # Puerto predeterminado de MongoDB
         'USER': 'admin',
@@ -94,7 +108,17 @@ DATABASES = {
 MONGO_USER = 'admin'
 MONGO_SECRET = 'admin+123+'
 MONGO_HOST = 'localhost' 
-MONGO_DB = 'dumpmongo'
+MONGO_DB = 'test'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+#OGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 
 # Password validation
@@ -114,6 +138,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'demo.UsuarioPersonalizado'
 
 
 # Internationalization
