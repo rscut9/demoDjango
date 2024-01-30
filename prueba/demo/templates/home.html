@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+    <hr>
+    <h4>Bienvenido, {{ user.username | upper }}</h4>
+
+{% endif %}
+
+{% endblock %}

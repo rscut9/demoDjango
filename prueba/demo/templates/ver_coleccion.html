@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Colecciones</title>
-    <style>
-        /* Estilos para el cuerpo de la página */
-        body {
-            margin-left: 1%;
-        }
-    </style>
-</head>
-<body>
-    <h1>Selecciona una colección:</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<hr>
+
+<h1>Selecciona una colección:</h1>
 
     <!-- Formulario para seleccionar y mostrar detalles de una colección -->
     <form method="get" action="{% url 'mostrar_coleccion' %}">
@@ -31,5 +25,5 @@
     {% if mensaje %}
         <p>{{ mensaje }}</p>
     {% endif %}
-</body>
-</html>
+
+{% endblock %}
