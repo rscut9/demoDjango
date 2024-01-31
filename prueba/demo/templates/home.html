@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-{% if request.user.is_authenticated %}
-
-    <hr>
-    <h4>Bienvenido, {{ user.username | upper }}</h4>
-
-{% endif %}
-
+    {% if request.user.is_authenticated %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">¡Bienvenido, {{ user.username | title }}!</h4>
+        </div>
+    {% endif %}
 {% endblock %}

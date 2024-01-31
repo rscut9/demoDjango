@@ -1,29 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<hr>
-
-<h1>Selecciona una colección:</h1>
-
-    <!-- Formulario para seleccionar y mostrar detalles de una colección -->
-    <form method="get" action="{% url 'mostrar_coleccion' %}">
-        {% csrf_token %} <!-- Token CSRF para protección contra ataques CSRF -->
-
-        <!-- Menú desplegable con las opciones de colecciones -->
-        <select name="coleccion">
-            {% for coleccion in colecciones %}
-                <option value="{{ coleccion }}">{{ coleccion }}</option>
-            {% endfor %}
-        </select>
-
-        <!-- Botón para enviar el formulario y mostrar detalles -->
-        <input type="submit" value="Mostrar">
-    </form>
-
-    <!-- Condición para mostrar un mensaje si existe -->
-    {% if mensaje %}
-        <p>{{ mensaje }}</p>
-    {% endif %}
-
+    <div class="alert alert-info" role="alert">
+        <h1>Selecciona una colección:</h1>
+        <form method="get" action="{% url 'mostrar_coleccion' %}">  <!-- Formulario para seleccionar y mostrar detalles de una colección -->
+            {% csrf_token %}        <!-- Token CSRF para protección contra ataques CSRF -->
+            <div class="mb-3">
+                <select name="coleccion" class="form-select">   <!-- Menú desplegable con las opciones de colecciones -->
+                    {% for coleccion in colecciones %}
+                        <option value="{{ coleccion }}">{{ coleccion }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-info">Mostrar</button> <!-- Botón para enviar el formulario y mostrar detalles -->
+        </form>
+        {% if mensaje %}        <!-- Condición para mostrar un mensaje si existe  -->
+            <p class="mt-3">{{ mensaje }}</p>
+        {% endif %}
+    </div>
 {% endblock %}

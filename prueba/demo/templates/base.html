@@ -11,8 +11,15 @@
 
     <style>
         /* Estilos adicionales */
-        body {
-            margin-left: 1%;
+        .custom-body {
+        margin-left: 1%;
+        }
+
+        .custom-container {
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         /* Ajustamos el margen del h2 */
@@ -22,7 +29,8 @@
     </style>
 
 </head>
-<body class="bg-light">
+<body class="bg-light custom-body">
+
 
     <!-- Barra de navegación de Bootstrap -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,7 +62,7 @@
     </nav>
 
     <!-- Contenido de la página -->
-    <div class="container mt-4">
+    <div class="container mt-4 custom-container">
         <h2 class="mb-4">Bienvenido a la página de inicio</h2>  
         {% block content %}{% endblock %}
     </div>

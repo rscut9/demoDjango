@@ -7,7 +7,7 @@ from demo import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('logout/', views.exit, name='exit'),
-    path('ver', views.ver_coleccion, name='ver_coleccion'),
+    path('ver/', views.ver_coleccion, name='ver_coleccion'),
     path('mostrar/', views.mostrar_coleccion, name='mostrar_coleccion'),
 
     #path('sentry-debug/', trigger_error),
