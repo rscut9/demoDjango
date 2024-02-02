@@ -34,34 +34,39 @@
 <body class="bg-light custom-body">
 
 
-    <!-- Barra de navegación de Bootstrap -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
-                    </li>
+<!-- Barra de navegación de Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                </li>
+                
+                {% if request.user.is_authenticated %} <!-- Solo si el usuario está autenticado -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'ver_coleccion' %}">Colecciones</a>
                     </li>
-                    {% if request.user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'exit' %}">Salir</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'crear_usuario' %}">Crear Usuario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'exit' %}">Salir</a>
+                    </li> 
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     <!-- Contenido de la página -->
     <div class="container mt-4 custom-container">

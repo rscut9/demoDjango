@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Crear Usuario</h2>
+  <form method="post" action="{% url 'crear_usuario' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear Usuario</button>
+  </form>
+{% endblock %}

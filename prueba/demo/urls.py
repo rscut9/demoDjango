@@ -9,6 +9,7 @@ urlpatterns = [
     path('logout/', views.exit, name='exit'),
     path('ver/', views.ver_coleccion, name='ver_coleccion'),
     path('mostrar/', views.mostrar_coleccion, name='mostrar_coleccion'),
+    path('crear_usuario/', views.create_user, name='crear_usuario'),
 
     #path('sentry-debug/', trigger_error),
     
