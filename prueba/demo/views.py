@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from pymongo import MongoClient
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from .forms import CreateUserForm
 
 # Conexión a la base de datos MongoDB
 client = MongoClient('localhost', 27017)
@@ -14,6 +15,17 @@ def home(request):
 def exit(request):
     logout(request)
     return redirect('home')
+
+def create_user(request):
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = CreateUserForm()
+
+    return render(request, 'crear_usuario.html', {'form': form})
 
 @login_required
 # Mostrar la lista de colecciones disponibles

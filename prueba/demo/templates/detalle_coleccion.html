@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Detalles de la colección "{{ coleccion }}"</h1>
-
-    <!-- Bucle para mostrar los detalles de la colección -->
-    {% for dato in datos %}
-        {% for key, value in dato.items %}
-            <p>{{ key }}: {{ value }}</p>
+    <div class="alert alert-dark" role="alert">
+        <h1>Detalles de la colección "{{ coleccion }}"</h1>
+        {% for dato in datos %}         <!-- Bucle para mostrar los detalles de la colección -->
+            {% for key, value in dato.items %}
+                <p><strong>{{ key }}:</strong> {{ value }}</p>
+            {% endfor %}
+            <hr class="my-2">       <!-- Línea horizontal para separar los datos -->
         {% endfor %}
-        <hr> <!-- Línea horizontal para separar los datos -->
-    {% endfor %}
-
+    </div>
 {% endblock %}
