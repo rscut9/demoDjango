@@ -94,19 +94,21 @@ WSGI_APPLICATION = 'prueba.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'test',
         'ENFORCE_SCHEMA': False,
+        'NAME': 'test',
         'CLIENT': {
-            'host': 'mongodb://localhost:27017/',
+            'host': 'mongodb://admin:admin%2B123%2B@localhost:27017',
         }
     }
 }
 
 
-"""
+mongodb://admin:admin%2B123%2B@localhost:27017/?authSource=admin
+
 DATABASES = {
 
     'default': {
@@ -119,19 +121,19 @@ DATABASES = {
     }
 
 }
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'test',
         'CLIENT': {
-            'host': 'prueba-mongodb-1',
+            'host': 'mongodb://admin:admin%2B123%2B@localhost:27017',
             'port': 27017,
         }
     }
 }
 
-"""
+
 
 
 # Configuraciones específicas de MongoDB
