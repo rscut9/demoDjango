@@ -5,7 +5,7 @@ from django.contrib.auth import logout
 from .forms import CreateUserForm
 
 # Conexión a la base de datos MongoDB
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://localhost:27017/')
 mydatabase = client.test
 
 

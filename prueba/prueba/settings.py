@@ -47,6 +47,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,14 +57,14 @@ INSTALLED_APPS = [
     'demo.apps.DemoConfig',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -94,17 +95,44 @@ WSGI_APPLICATION = 'prueba.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'test',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017/',
+        }
+    }
+}
+
+
+"""
+DATABASES = {
 
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'test',
-        'HOST': 'localhost',
+        'HOST': 'prueba-mongodb-1', # Nombre del contenedor Docker
         'PORT': 27017,  # Puerto predeterminado de MongoDB
         'USER': 'admin',
         'PASSWORD': 'admin+123+',
     }
 
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'test',
+        'CLIENT': {
+            'host': 'prueba-mongodb-1',
+            'port': 27017,
+        }
+    }
+}
+
+"""
+
 
 # Configuraciones específicas de MongoDB
 MONGO_USER = 'admin'
