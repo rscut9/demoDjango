@@ -2,9 +2,17 @@
 
 {% block content %}
   <h2>Crear Usuario</h2>
-  <form method="post" action="{% url 'crear_usuario' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Crear Usuario</button>
+  <form method="post" action="{% url 'crear_usuario' %}" class="form">
+    <table>
+      {% csrf_token %}
+      {% for field in form %}
+        <tr>
+          <td>{{ field.label_tag }}</td>
+          <td>{{ field }}</td>
+          <td>{% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <button type="submit" class="btn btn-primary">Crear Usuario</button>
   </form>
 {% endblock %}

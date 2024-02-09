@@ -1,8 +1,15 @@
-{% extends 'home.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
     <div class="alert alert-primary" role="alert">
         <h3 class="mb-4">Iniciar Sesión</h3>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
         <form action="" method="post">
             {% csrf_token %}
             <div class="mb-3">

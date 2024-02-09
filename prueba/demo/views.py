@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from pymongo import MongoClient
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -15,6 +17,20 @@ def home(request):
 def exit(request):
     logout(request)
     return redirect('home')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # O redirecciona a la página que desees después del inicio de sesión exitoso
+        else:
+            messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
+    else:
+        messages.error(request, 'Por favor, completa el formulario para iniciar sesión.')  # Agrega este mensaje si no es un método POST
+    return render(request, 'login.html')
 
 def create_user(request):
     if request.method == 'POST':
