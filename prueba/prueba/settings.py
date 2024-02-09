@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 
 """
-# settings.py
 import sentry_sdk
 
 sentry_sdk.init(
@@ -121,6 +120,7 @@ DATABASES = {
     }
 
 }
+
 """
 DATABASES = {
     'default': {
