@@ -25,11 +25,9 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')  # O redirecciona a la página que desees después del inicio de sesión exitoso
+            return redirect('base.html')  # O redirecciona a la página que desees después del inicio de sesión exitoso
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
-    else:
-        messages.error(request, 'Por favor, completa el formulario para iniciar sesión.')  # Agrega este mensaje si no es un método POST
     return render(request, 'login.html')
 
 def create_user(request):
