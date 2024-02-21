@@ -128,7 +128,6 @@ DATABASES = {
         'NAME': 'test',
         'CLIENT': {
             'host': 'mongodb://admin:admin%2B123%2B@localhost:27017',
-            'port': 27017,
         }
     }
 }

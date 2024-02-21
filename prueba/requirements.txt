@@ -1,3 +1,4 @@
+django
 djongo
 pytz
 django-cors-headers
